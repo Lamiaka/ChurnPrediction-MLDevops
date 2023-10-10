@@ -1,0 +1,46 @@
+root - INFO - ________________________________________
+root - INFO - Testing import_data function.
+root - INFO - ________________________________________
+root - INFO - Testing import_data: SUCCESS
+root - INFO - ________________________________________
+root - INFO - Testing flag_churn function.
+root - INFO - ________________________________________
+root - INFO - ________________________________________
+root - INFO - Testing flag_churn function.
+root - INFO - ________________________________________
+root - INFO - Flagging churned customers: SUCCESS.
+root - INFO - ________________________________________
+root - INFO - Testing perform_eda function.
+root - INFO - ________________________________________
+root - INFO - Performing EDA: SUCCESS.
+root - INFO - Figure saving for EDA process: SUCCESS.
+root - INFO - ________________________________________
+root - INFO - Testing encoder_helper function.
+root - INFO - ________________________________________
+root - INFO - Passing a list of features: SUCCESS
+root - INFO - Churn columns created: SUCCESS
+root - INFO - ________________________________________
+root - INFO - Testing perform_feature_engineering function.
+root - INFO - ________________________________________
+root - INFO - Feature engineering completed.
+root - INFO - Shape of train and test datasets match input data.
+root - INFO - Target labels correctly generated.
+root - INFO - ________________________________________
+root - INFO - Testing save_classification_report_image function.
+root - INFO - ________________________________________
+root - INFO - Classification report figure generation: SUCCESS.
+root - INFO - ________________________________________
+root - INFO - Testing roc_curve_image function.
+root - INFO - ________________________________________
+root - INFO - ROC curve figure generation: SUCCESS.
+root - INFO - ________________________________________
+root - INFO - Testing shapley_image function.
+root - INFO - ________________________________________
+root - INFO - Shapley figure generation: SUCCESS.
+root - INFO - ________________________________________
+root - INFO - Testing feature_importance_plot function.
+root - INFO - ________________________________________
+root - INFO - Feature importance plot : SUCCESS.
+root - INFO - ________________________________________
+root - INFO - Testing train_models function - model training and storage.
+root - INFO - ________________________________________
