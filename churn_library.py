@@ -19,8 +19,6 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import plot_roc_curve, classification_report
 import constants as const
-#from constants import *
-#from constants import image_folder, eda_folder
 
 os.environ['QT_QPA_PLATFORM'] = 'offscreen'
 
