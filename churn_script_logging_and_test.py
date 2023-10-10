@@ -33,8 +33,7 @@ def setup_logging():
         filename=logs_filepath,
         level=logging.INFO,
         filemode='w',
-        format='%(name)s - %(levelname)s - %(message)s',
-        force=True)
+        format='%(name)s - %(levelname)s - %(message)s')
 
 
 def setup_module():
@@ -639,3 +638,25 @@ def test_train_models_figure_creation():
                         raise err
 
     shutil.rmtree(mock_image_folder)
+
+
+if __name__ == "__main__":
+
+    setup_logging()
+    test_import(cl.const.PATH_DATA)
+    test_flag_churn(cl.import_data(cl.const.PATH_DATA))
+    test_eda(cl.flag_churn(cl.import_data(cl.const.PATH_DATA)))
+    test_encoder_helper(cl.flag_churn(cl.import_data(cl.const.PATH_DATA)), cl.const.CAT_COLUMNS)
+    test_perform_feature_engineering(
+        cl.encoder_helper(
+            cl.flag_churn(cl.import_data(cl.const.PATH_DATA)),
+            cl.const.CAT_COLUMNS
+        )
+    )
+    test_save_classification_report_image()
+    test_roc_curve_image()
+    test_shapley_image()
+    test_feature_importance_plot()
+    test_train_models_model_creation()
+    test_train_models_figure_creation()
+
