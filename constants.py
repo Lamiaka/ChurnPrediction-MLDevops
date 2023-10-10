@@ -6,6 +6,7 @@ Date: 2023-10-01
 # parameters paths
 PATH_DATA = './data/bank_data.csv'
 IMAGE_FOLDER = './images'
+MODEL_FOLDER = './models'
 RESULTS_FOLDER = 'results'
 EDA_FOLDER = 'eda'
 OUTPUT_PATH_RF = './models/rfc_model.pkl'
