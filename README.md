@@ -8,7 +8,8 @@ We use the Telco Customer Churn dataset from Kaggle.
 The dataset contains 7043 rows and 21 columns. 
 Each row represents a customer, each column contains customer’s attributes described 
 on the column Metadata. The raw data contains 7043 rows (customers) and 21 columns (features). 
-The “Churn” column is our target.
+The “Churn” column is our target. The goal of this project is to train a linear and a tree-based model and evaluate their performance on predicting the churn label.
+The scripts follow pep8 guidelines and are provided with unit-testing following best coding practices and machine learning DevOps.
 
 ## Files and data description
 Overview of the files and data present in the root directory. 
