@@ -65,7 +65,7 @@ def perform_eda(dataframe):
 
     # check if eda image path exists
     if not os.path.exists(os.path.join(const.IMAGE_FOLDER, const.EDA_FOLDER)):
-        os.mkdir(os.path.join(const.IMAGE_FOLDER, const.EDA_FOLDER))
+        os.makedirs(os.path.join(const.IMAGE_FOLDER, const.EDA_FOLDER))
 
     # create and save churn distribution
     path_figure = os.path.join(
@@ -191,6 +191,8 @@ def save_classification_report_image(y_true, y_pred, name):
     output:
         None
     """
+    if not os.path.exists(os.path.join(const.IMAGE_FOLDER, const.RESULTS_FOLDER)):
+        os.makedirs(os.path.join(const.IMAGE_FOLDER, const.RESULTS_FOLDER))
 
     path_figure = os.path.join(
         const.IMAGE_FOLDER,
@@ -217,6 +219,8 @@ def roc_curve_image(x_test, y_test, model_list):
     """
 
     fig, axis = plt.subplots(nrows=1, ncols=1, figsize=[const.FIG_WIDTH, const.FIG_HEIGHT])
+    if not os.path.exists(os.path.join(const.IMAGE_FOLDER, const.RESULTS_FOLDER)):
+        os.makedirs(os.path.join(const.IMAGE_FOLDER, const.RESULTS_FOLDER))
 
     for model in model_list:
         plot_roc_curve(model, x_test, y_test, ax=axis)
@@ -234,6 +238,8 @@ def shapley_image(tree_model, x_test):
     output:
         None
     """
+    if not os.path.exists(os.path.join(const.IMAGE_FOLDER, const.RESULTS_FOLDER)):
+        os.makedirs(os.path.join(const.IMAGE_FOLDER, const.RESULTS_FOLDER))
 
     explainer = shap.TreeExplainer(tree_model)
     shap_values = explainer.shap_values(x_test)
@@ -257,6 +263,9 @@ def feature_importance_plot(model, x_data, output_pth):
     output:
              None
     """
+    if not os.path.exists(os.path.join(const.IMAGE_FOLDER, const.RESULTS_FOLDER)):
+        os.makedirs(os.path.join(const.IMAGE_FOLDER, const.RESULTS_FOLDER))
+
     # Calculate feature importance
     feature_importance = model.feature_importances_
 
@@ -295,6 +304,9 @@ def train_models(x_train, x_test, y_train, y_test):
               None
     """
 
+    if not os.path.exists(os.path.join(const.IMAGE_FOLDER, const.RESULTS_FOLDER)):
+        os.makedirs(os.path.join(const.IMAGE_FOLDER, const.RESULTS_FOLDER))
+
     # grid search
     rfc = RandomForestClassifier(random_state=const.RANDOM_STATE)
     # Use a different solver if the default 'lbfgs' fails to converge
@@ -323,18 +335,11 @@ def train_models(x_train, x_test, y_train, y_test):
     y_train_preds_lr = lrc.predict(x_train)
     y_test_preds_lr = lrc.predict(x_test)
 
-    # save classification report
+    # save classification reports
     save_classification_report_image(y_train, y_train_preds_lr, 'train_lr')
     save_classification_report_image(y_test, y_test_preds_lr, 'test_lr')
     save_classification_report_image(y_train, y_train_preds_rf, 'train_rf')
     save_classification_report_image(y_test, y_test_preds_rf, 'test_rf')
-
-    #classification_report_image(y_train,
-    #                            y_test,
-    #                            y_train_preds_lr,
-    #                            y_train_preds_rf,
-    #                           y_test_preds_lr,
-    #                          y_test_preds_rf)
 
     # save roc curves
     roc_curve_image(x_test, y_test, [lrc, cv_rfc.best_estimator_])
@@ -351,6 +356,9 @@ def train_models(x_train, x_test, y_train, y_test):
     shapley_image(cv_rfc.best_estimator_, x_test)
 
     # save best model
+    if not os.path.exists(const.MODEL_FOLDER):
+        os.mkdir(const.MODEL_FOLDER)
+
     joblib.dump(cv_rfc.best_estimator_, const.OUTPUT_PATH_RF)
     joblib.dump(lrc, const.OUTPUT_PATH_LR)
 
