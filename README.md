@@ -25,6 +25,11 @@ The constants variables are defined in the `constants.py` file.
 The `churn_script_logging_and_tests.py` file contains the code testing functions for the `churn_library.py` module.
 Finally, the `requirements_py3.6.txt` file contains the list of the packages needed to run the code.
 
+The remaining files are generated when running the codes.
+- [images folder](https://github.com/Lamiaka/ChurnPrediction-MLDevops/tree/master/images)
+- [models folder](https://github.com/Lamiaka/ChurnPrediction-MLDevops/tree/master/models)
+- [logs folder](https://github.com/Lamiaka/ChurnPrediction-MLDevops/tree/master/logs)
+
 ## Running Files
 To run the files, you need to first install the packages present in the requirement file using the following command in the terminal:  
 `pip install -r requirements_py3.6.txt`
@@ -32,8 +37,11 @@ To run the files, you need to first install the packages present in the requirem
 To run the tests and validate that the code will run smoothly, you can run the following command:  
 `pytest`
 
-Then, when the tests have run successfully, you can run the following command to train the model on the dataset:  
-`python churn_library.py`
+To generate the logs in the testing procedures, you can run the following command:  
+`python3 churn_script_logging_and_tests.py`
+
+Finally, when the tests have run successfully, you can run the following command to train the models on the dataset:  
+`python3 churn_library.py`
 
 
 
